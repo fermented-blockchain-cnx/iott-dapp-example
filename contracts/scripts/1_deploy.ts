@@ -4,7 +4,7 @@ import { ethers } from "hardhat"
 import { BN } from "bn.js"
 
 async function main() {
-  const [ owner ] = await ethers.getSigners()
+  const [owner] = await ethers.getSigners()
 
   const Application = await ethers.getContractFactory("Application")
   const app = await Application.deploy()
@@ -15,19 +15,19 @@ async function main() {
   let tx = await app.grant(owner.address)
   await tx.wait()
 
-  const Bank = await ethers.getContractFactory('Bank')
+  const Bank = await ethers.getContractFactory("Bank")
   const bank = await Bank.deploy()
   await bank.deployed()
 
   console.log(`BANK_CONTRACT=${bank.address}`)
 
-  const Registration = await ethers.getContractFactory('Registration')
+  const Registration = await ethers.getContractFactory("Registration")
   const registration = await Registration.deploy()
   await registration.deployed()
 
   console.log(`REGISTRATION_CONTRACT=${registration.address}`)
 
-  const Pebble = await ethers.getContractFactory('Pebble')
+  const Pebble = await ethers.getContractFactory("Pebble")
   const pebble = await Pebble.deploy(bank.address, registration.address)
   await pebble.deployed()
 
@@ -45,7 +45,7 @@ async function main() {
   console.log(`ACCOUNT_CONTRACT=${account.address}`)
 
   const Token = await ethers.getContractFactory("Token")
-  const token = await Token.deploy('PBG', 'PBG', 18)
+  const token = await Token.deploy("PBG", "PBG", 18)
   await token.deployed()
 
   tx = await token.mint(pebble.address, new BN("100000000000000000000000000").toString())
@@ -64,7 +64,7 @@ async function main() {
     PEBBLE_CONTRACT: pebble.address.slice(2),
     ACCOUNT_CONTRACT: account.address.slice(2),
     TOKEN_CONTRACT: token.address.slice(2),
-    START_HEIGHT: height
+    START_HEIGHT: height,
   }
 
   const sharedAddressPath = `${process.cwd()}/config/${ethers.provider.network.chainId}.json`
@@ -73,7 +73,7 @@ async function main() {
 
 main()
   .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+  .catch((error) => {
+    console.error(error)
+    process.exit(1)
+  })

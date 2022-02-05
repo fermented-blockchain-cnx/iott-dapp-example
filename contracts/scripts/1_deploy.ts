@@ -1,7 +1,8 @@
 import _ from "lodash"
 import fs from "fs-extra"
 import { ethers } from "hardhat"
-import { BN } from "bn.js"
+// import { BN } from "bn.js"
+import BN = require("bn.js")
 
 async function main() {
   const [owner] = await ethers.getSigners()

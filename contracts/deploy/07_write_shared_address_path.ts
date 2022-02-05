@@ -24,6 +24,9 @@ export default async function writeSharedAddressPath({ deployments }: HardhatRun
   }
 
   const sharedAddressPath = `${process.cwd()}/config/${ethers.provider.network.chainId}.json`
+  console.log(sharedAddressPath)
+  console.log('-----------')
+  console.log(JSON.stringify(addressBook, null, 2))
   await fs.writeFile(sharedAddressPath, JSON.stringify(addressBook, null, 2))
 }
 

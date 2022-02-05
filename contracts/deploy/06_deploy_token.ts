@@ -1,5 +1,5 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types"
-import { BN } from "bn.js"
+import BN = require("bn.js")
 
 export default async function func({ deployments, getNamedAccounts }: HardhatRuntimeEnvironment) {
   const { deploy, execute } = deployments

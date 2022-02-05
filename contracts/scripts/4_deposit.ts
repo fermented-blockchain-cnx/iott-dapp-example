@@ -3,7 +3,7 @@ import fs from "fs-extra"
 import { ethers } from "hardhat"
 
 async function main() {
-  const [ owner ] = await ethers.getSigners()
+  const [owner] = await ethers.getSigners()
   const height = await ethers.provider.getBlockNumber()
   console.log(`HEIGHT=${height}`)
 
@@ -14,7 +14,7 @@ async function main() {
   const Bank = await ethers.getContractFactory('Bank')
   const bank = await Bank.attach('0x' + addressBook.BANK_CONTRACT)
 
-  const tx = await bank.deposit(owner.address, { value: '10000000000000000000' })
+  const tx = await bank.deposit(owner.address, { value: '1000000000000000000' })
   await tx.wait()
 }
 

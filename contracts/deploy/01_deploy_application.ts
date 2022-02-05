@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types"
 
-export default async function func({ deployments, getNamedAccounts }: HardhatRuntimeEnvironment) {
+async function func({ deployments, getNamedAccounts }: HardhatRuntimeEnvironment) {
   const { deploy, execute } = deployments
   const { deployer } = await getNamedAccounts()
 
@@ -12,3 +12,5 @@ export default async function func({ deployments, getNamedAccounts }: HardhatRun
 }
 
 func.tags = ["Application"]
+
+export default func;
